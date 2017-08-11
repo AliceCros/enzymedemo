@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Todo from './Todo'
 
-class Todos extends Component{
-  
-  render() {    
-    let todos = this.props.todos.map( (todo) => ( <Todo key={todo.id} text={todo.text} onDeleteItem={ () => this.props.onDeleteItem(todo.id) } /> ))
+function Todos(props){
+
+    let todos = props.todos.map( (todo) => ( <Todo key={todo.id} text={todo.text} onDeleteItem={ () => props.onDeleteItem(todo.id) } /> ))
+    
     return (
       <div>
         <h2>Mes todos</h2>
@@ -13,8 +13,6 @@ class Todos extends Component{
         </ul>
       </div>
     )
-  }
-
 }
 
 export default Todos

@@ -4,7 +4,6 @@ class TodoForm extends Component{
 
   constructor(props) {
     super(props);
-    this.state = {todoText : ''};
   }
 
   submitForm(e){
@@ -17,10 +16,10 @@ class TodoForm extends Component{
 
   render(){
     return (
-      <form onSubmit={(e) => this.submitForm(e) }>
+      <form onSubmit={(e) => this.submitForm(e) } type="submit">
 
         <h2>Ajouter une todo</h2>
-        <input type="text" placeholder="A faire" ref="todoText" />
+        <input type="text" placeholder="A faire" ref="todoText" required />
 
         <button>Créer</button>
       

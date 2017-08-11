@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import uuid from 'uuid/v4'
+
 import logo from './logo.svg';
 
 import Todos from './Todos';
@@ -11,22 +13,27 @@ class App extends Component {
     super(props);
   
     this.state = {
+      todos: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
       todos: [
         {
-          id: 1, 
+          id: uuid(), 
           text: 'Manger'
         },
         {
-          id: 2, 
+          id: uuid(), 
           text: 'Boire'
         },
         {
-          id: 3, 
+          id: uuid(), 
           text: 'Dormir'
         },
-
       ]
-    };
+    })
   }
 
   deleteItem(id){
@@ -44,11 +51,11 @@ class App extends Component {
   }
 
   submitTodo(text){
-    let newTodos = this.state.todos.slice();
+    let newTodos = this.state.todos.slice(); // Slice permet de ne pas muter le state (même si on n'utilise pas Redux ici)
 
     newTodos.push({
       text, 
-      id: newTodos.length + 1
+      id: uuid()
     })
 
     this.setState({
